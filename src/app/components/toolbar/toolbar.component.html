@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" borderBottom>
+<mat-toolbar color="primary">
   <!-- <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
       <mat-icon>menu</mat-icon>
   </button> -->
@@ -8,6 +8,10 @@
       <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+      <button mat-menu-item routerLink="/login">
+          <mat-icon>input</mat-icon><span>Login</span>
+      </button>
+      <mat-divider></mat-divider>
       <button mat-menu-item routerLink="#">
           <mat-icon>person</mat-icon><span>My Account</span>
       </button>
