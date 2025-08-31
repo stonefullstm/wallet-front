@@ -3,7 +3,7 @@
     <mat-card-title>Login</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <!-- <form [formGroup]="form" (ngSubmit)="login()">
+    <form [formGroup]="form" (ngSubmit)="login()">
       <mat-form-field appearance="outline">
         <mat-label>E-mail:</mat-label>
         <input matInput type="email" id="email" placeholder="E-mail" formControlName="email" requiredminlength="5" required>
@@ -16,6 +16,6 @@
         <span>Esqueci minha senha</span>
         <button type="submit" mat-raised-button [disabled]="!form.valid" color="primary">Entrar</button>
       </div>
-    </form> -->
+    </form>
   </mat-card-content>
 </mat-card>
