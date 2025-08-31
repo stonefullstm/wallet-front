@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -13,9 +13,9 @@ import { LoginData } from '../../models/loginData';
   selector: 'app-login',
   imports: [
     CommonModule,
-    ReactiveFormsModule, 
-    MatCardModule, 
-    MatFormFieldModule, 
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
   ],
@@ -23,16 +23,11 @@ import { LoginData } from '../../models/loginData';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-    form!: FormGroup;
+  private formBuilder = inject(FormBuilder);
+  private tokenService = inject(TokenService);
+  private router = inject(Router);
 
-    constructor(
-        private formBuilder:FormBuilder,
-        private tokenService: TokenService,
-        // private storageService: StorageService,
-        // private domainService: DomainService,
-        private router: Router,
-      ) { 
-    }
+  form!: FormGroup;
 
   ngOnInit(): void {
     this.criarForm()
@@ -52,14 +47,15 @@ export class LoginComponent {
     }
     if (this.form.valid) {
     };
-      this.tokenService.getToken(this.form.value).subscribe({
-        next: (data) => {
-          console.log(data);
-          // this.storageService.setToken(data.token);
-          // this.domainService.setDomain(data.domain);
-          this.router.navigate(['/login']);
-        }
+    this.tokenService.getToken(this.form.value).subscribe({
+      next: (data) => {
+        console.log(data);
+        // this.storageService.setToken(data.token);
+        // this.domainService.setDomain(data.domain);
+        this.router.navigate(['/login']);
+      }
 
-            }
-      )}
+    }
+    )
+  }
 }

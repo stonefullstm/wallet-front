@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { TokenData } from '../../models/tokenData';
 import { LoginData } from '../../models/loginData';
@@ -9,10 +9,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TokenService {
+  private http = inject(HttpClient);
+
   private baseUrl: string = "";
   tokenData: TokenData | any;
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this.baseUrl = `http://${environment.apiUrl}/api/token/`;
   }
 
