@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
 import { TokenService } from '../../services/api/token.service';
 import { Router } from '@angular/router';
 import { LoginData } from '../../models/loginData';
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   private tokenService = inject(TokenService);
   private storageService = inject(StorageService);
   private router = inject(Router);
+  private location = inject(Location);
 
   form!: FormGroup;
 
@@ -52,8 +54,12 @@ export class LoginComponent implements OnInit {
         console.log(data);
         this.storageService.setToken('accessToken', data.access);
         // this.domainService.setDomain(data.domain);
-        this.router.navigate(['/home']);
+        this.location.back();
       },
     });
+  }
+
+  cancel(): void {
+    this.location.back();
   }
 }
