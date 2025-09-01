@@ -12,7 +12,7 @@ export class TokenService {
   private http = inject(HttpClient);
 
   private baseUrl = '';
-  tokenData: TokenData | any;
+  private tokenData?: Observable<TokenData>;
 
   constructor() {
     this.baseUrl = `http://${environment.apiUrl}/api/token/`;

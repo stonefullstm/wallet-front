@@ -4,13 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class StorageService {
-  constructor() {}
-
-  setToken(key: string, data: any) {
+  setToken(key: string, data: string) {
     localStorage.setItem(key, JSON.stringify(data));
   }
 
-  getToken(key: string): any {
+  getToken(key: string): string | null {
     const data = localStorage.getItem(key);
     if (data) {
       return JSON.parse(data);

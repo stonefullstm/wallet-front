@@ -47,9 +47,7 @@ export class LoginComponent implements OnInit {
       username: this.form.get('username')?.value,
       password: this.form.get('password')?.value,
     };
-    if (this.form.valid) {
-    }
-    this.tokenService.getToken(this.form.value).subscribe({
+    this.tokenService.getToken(loginData).subscribe({
       next: (data) => {
         console.log(data);
         this.storageService.setToken('accessToken', data.access);
