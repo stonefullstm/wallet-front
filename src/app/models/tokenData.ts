@@ -1,4 +1,4 @@
-export type TokenData = {
-  refresh: string,
-  access: string,
+export interface TokenData {
+  refresh: string;
+  access: string;
 }
