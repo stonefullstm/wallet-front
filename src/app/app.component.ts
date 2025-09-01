@@ -6,7 +6,7 @@ import { HomeComponent } from './components/home/home.component';
   selector: 'app-root',
   imports: [RouterOutlet, HomeComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'homes';

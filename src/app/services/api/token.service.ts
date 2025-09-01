@@ -6,12 +6,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenService {
   private http = inject(HttpClient);
 
-  private baseUrl: string = "";
+  private baseUrl = '';
   tokenData: TokenData | any;
 
   constructor() {
@@ -19,8 +19,7 @@ export class TokenService {
   }
 
   getToken(login: LoginData): Observable<TokenData> {
-    this.tokenData = this.http
-      .post<TokenData>(this.baseUrl, login);
+    this.tokenData = this.http.post<TokenData>(this.baseUrl, login);
     return this.tokenData;
   }
 }

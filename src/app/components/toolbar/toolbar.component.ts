@@ -22,11 +22,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatMenuModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   templateUrl: './toolbar.component.html',
-  styleUrl: './toolbar.component.css'
+  styleUrl: './toolbar.component.css',
 })
-export class ToolbarComponent {
-
-}
+export class ToolbarComponent {}
