@@ -15,4 +15,10 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+  margin-bottom: 20px;
+}
+
+.chart-card {
+  margin: 20px;
+  padding: 20px;
 }

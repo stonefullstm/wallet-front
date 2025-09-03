@@ -13,6 +13,7 @@ import { GreaterData } from '../../models/greaterData';
 export class GreaterComponent implements OnInit {
   displayedColumns: string[] = ['position', 'ticker', 'value'];
   dataSource: GreaterData[] = [];
+  valueLabel = '%';
   @Input() dataType = 0;
 
   private historyService: HistoryService = inject(HistoryService);
@@ -32,6 +33,7 @@ export class GreaterComponent implements OnInit {
           data.sort((a, b) => a.alta_baixa - b.alta_baixa);
         } else {
           data.sort((a, b) => b.volume - a.volume);
+          this.valueLabel = 'R$';
         }
         this.dataSource = data.slice(0, 10).map((item, index) => ({
           position: index + 1,
