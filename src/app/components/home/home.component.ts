@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
+import { GreaterComponent } from '../greater/greater.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  imports: [ToolbarComponent],
+  imports: [ToolbarComponent, GreaterComponent],
 })
 export class HomeComponent {}

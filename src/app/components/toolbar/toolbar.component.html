@@ -1,29 +1,58 @@
 <mat-toolbar color="primary">
-  <!-- <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
+    <!-- <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
       <mat-icon>menu</mat-icon>
   </button> -->
-  <span class="toolbar-title">InvestPortfolio</span>
-  <span class="toolbar-item-spacer"></span>
-  <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
-      <mat-icon>account_circle</mat-icon>
-  </button>
-  <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
-      <button mat-menu-item routerLink="/login">
-          <mat-icon>input</mat-icon><span>Login</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="#">
-          <mat-icon>person</mat-icon><span>My Account</span>
-      </button>
-      <button mat-menu-item routerLink="#">
-          <mat-icon>settings</mat-icon><span>Settings</span>
-      </button>
-      <button mat-menu-item routerLink="#">
-          <mat-icon>help</mat-icon><span>Help</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="#">
-          <mat-icon>exit_to_app</mat-icon>Logout
-      </button>
-  </mat-menu>
+    <span class="toolbar-title">InvestPortfolio</span>
+    <span class="toolbar-item-spacer"></span>
+    <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+        <button mat-menu-item routerLink="/login">
+            <mat-icon>input</mat-icon><span>Login</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="#">
+            <mat-icon>person</mat-icon><span>My Account</span>
+        </button>
+        <button mat-menu-item routerLink="#">
+            <mat-icon>settings</mat-icon><span>Settings</span>
+        </button>
+        <button mat-menu-item routerLink="#">
+            <mat-icon>help</mat-icon><span>Help</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="#">
+            <mat-icon>exit_to_app</mat-icon>Logout
+        </button>
+    </mat-menu>
 </mat-toolbar>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Gráfico</mat-card-title>
+    </mat-card-header>
+    <ng-content select="[chart]"></ng-content>
+</mat-card>
+<div class="greater-cards">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Maiores altas</mat-card-title>
+        </mat-card-header>
+        <ng-content select="[high]"></ng-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Maiores baixas</mat-card-title>
+        </mat-card-header>
+        <ng-content select="[low]"></ng-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Maiores volumes</mat-card-title>
+        </mat-card-header>
+        <ng-content select="[volume]"></ng-content>
+    </mat-card>
+</div>
