@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { HistoryService } from '../../services/api/history.service';
@@ -6,20 +6,16 @@ import { GreaterData } from '../../models/greaterData';
 
 @Component({
   selector: 'app-greater',
-  imports: [
-    MatTableModule,
-    CommonModule,
-],
+  imports: [MatTableModule, CommonModule],
   templateUrl: './greater.component.html',
-  styleUrl: './greater.component.css'
+  styleUrl: './greater.component.css',
 })
-export class GreaterComponent implements OnInit 
-{
+export class GreaterComponent implements OnInit {
   displayedColumns: string[] = ['position', 'ticker', 'value'];
   dataSource: GreaterData[] = [];
   @Input() dataType = 0;
 
-  constructor(private historyService: HistoryService) {}
+  private historyService: HistoryService = inject(HistoryService);
 
   ngOnInit(): void {
     this.getMaxMinData();
