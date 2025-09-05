@@ -27,13 +27,14 @@
         </button>
     </mat-menu>
 </mat-toolbar>
-
-<mat-card class="chart-card">
-    <mat-card-header>
-        <mat-card-title>Gráfico</mat-card-title>
-    </mat-card-header>
-    <ng-content select="[chart]"></ng-content>
-</mat-card>
+<div class="toolbar-spacer">
+    <mat-card class="chart-card">
+        <mat-card-header>
+            <mat-card-title>Gráfico</mat-card-title>
+        </mat-card-header>
+        <ng-content select="[chart]"></ng-content>
+    </mat-card>
+</div>
 <div class="greater-cards">
     <mat-card>
         <mat-card-header>

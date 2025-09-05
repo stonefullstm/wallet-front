@@ -19,6 +19,12 @@
 }
 
 .chart-card {
+  width: 80%;
   margin: 20px;
   padding: 20px;
+}
+
+.toolbar-spacer {
+  display: flex;
+  justify-content: center;
 }

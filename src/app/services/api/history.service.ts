@@ -21,7 +21,14 @@ export class HistoryService {
     return this.http.get<MaxminData[]>(this.baseUrl + 'get-last-day/');
   }
 
-  getHistoryData(ticker: string): Observable<HistoryData[]> {
-    return this.http.get<HistoryData[]>(this.baseUrl + `retrieve/${ticker}/`);
+  getHistoryData(
+    ticker: string,
+    dataInicial: string,
+    dataFinal: string,
+  ): Observable<HistoryData[]> {
+    return this.http.get<HistoryData[]>(
+      this.baseUrl +
+        `retrieve/${ticker}/?start_date=${dataInicial}&end_date=${dataFinal}`,
+    );
   }
 }
