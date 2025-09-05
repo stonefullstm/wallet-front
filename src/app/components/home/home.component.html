@@ -1,1 +1,14 @@
-<app-toolbar></app-toolbar>
+<app-toolbar>
+  <div chart>
+    <app-graphics></app-graphics>
+  </div>
+  <div high>
+    <app-greater [dataType]="0"></app-greater>
+  </div>
+  <div low>
+    <app-greater [dataType]="1"></app-greater>
+  </div>
+  <div volume>
+    <app-greater [dataType]="2"></app-greater>
+  </div>
+</app-toolbar>
