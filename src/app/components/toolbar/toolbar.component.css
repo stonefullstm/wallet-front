@@ -18,7 +18,12 @@
   margin-bottom: 20px;
 }
 
+.greater-cards mat-card {
+  border: 1px solid black;
+}
+
 .chart-card {
+  border: 1px solid black;
   width: 80%;
   margin: 20px;
   padding: 20px;

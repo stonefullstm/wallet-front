@@ -32,17 +32,26 @@ export class GraphicsComponent implements OnInit {
         next: (res) => {
           this.graph = {
             data: [
+              // {
+              //   x: res.map((item) => item.date),
+              //   open: res.map((item) => item.open),
+              //   high: res.map((item) => item.high),
+              //   low: res.map((item) => item.low),
+              //   close: res.map((item) => item.close),
+              //   type: 'candlestick',
+              // },
               {
                 x: res.map((item) => item.date),
-                open: res.map((item) => item.open),
-                high: res.map((item) => item.high),
-                low: res.map((item) => item.low),
-                close: res.map((item) => item.close),
-                type: 'candlestick',
-              },
+                y: res.map((item) => item.close),
+                type: 'scatter',
+                mode: 'lines',
+                fill: 'tozeroy',
+                line: { color: 'black' },
+                fillcolor: 'rgba(0, 255, 0, 0.5)'
+              }
             ],
             layout: {
-              title: '^BVSP History',
+              title: {text: `Valores históricos de ${ticker}`},
               xaxis: {
                 rangeslider: { visible: false },
               },
