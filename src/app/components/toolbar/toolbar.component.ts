@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import { SearchBarComponent } from "../search-bar/search-bar.component";
 
 @Component({
   selector: 'app-toolbar',
@@ -25,7 +26,8 @@ import { MatCardModule } from '@angular/material/card';
     MatToolbarModule,
     MatTooltipModule,
     MatCardModule,
-  ],
+    SearchBarComponent
+],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css',
 })
