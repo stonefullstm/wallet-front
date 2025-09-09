@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { GreaterComponent } from '../greater/greater.component';
-import { GraphicsComponent } from "../graphics/graphics.component";
+import { GraphicsComponent } from '../graphics/graphics.component';
 
 @Component({
   selector: 'app-home',
