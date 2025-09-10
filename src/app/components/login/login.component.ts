@@ -1,15 +1,16 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Location } from '@angular/common';
 import { TokenService } from '../../services/api/token.service';
 import { Router } from '@angular/router';
 import { LoginData } from '../../models/loginData';
 import { StorageService } from '../../services/storage/storage.service';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogContent, MatDialogRef, MatDialogActions } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,8 @@ import { StorageService } from '../../services/storage/storage.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogContent,
+    MatDialogActions,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
@@ -33,6 +36,16 @@ export class LoginComponent implements OnInit {
 
   form!: FormGroup;
 
+  constructor(
+    public dialogRef: MatDialogRef<LoginComponent>,
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
   ngOnInit(): void {
     this.criarForm();
   }
@@ -44,22 +57,31 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(): void {
-    const loginData: LoginData = {
-      username: this.form.get('username')?.value,
-      password: this.form.get('password')?.value,
-    };
-    this.tokenService.getToken(loginData).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.storageService.setToken('accessToken', data.access);
-        // this.domainService.setDomain(data.domain);
-        this.location.back();
-      },
-    });
+  // onLogin(): void {
+  //   const loginData: LoginData = {
+  //     username: this.form.get('username')?.value,
+  //     password: this.form.get('password')?.value,
+  //   };
+  //   this.tokenService.getToken(loginData).subscribe({
+  //     next: (data) => {
+  //       console.log(data);
+  //       this.storageService.setToken('accessToken', data.access);
+  //       // this.domainService.setDomain(data.domain);
+  //       this.location.back();
+  //     },
+  //   });
+  // }
+
+  onLogin(): void {
+    if (this.form.valid) {
+      // Perform login logic, e.g., call an authentication service
+      const { username, password } = this.form.value;
+      // ...
+      this.dialogRef.close({ success: true, username: username }); // Pass data back
+    }
   }
 
-  cancel(): void {
-    this.location.back();
+  onCancel(): void {
+    this.dialogRef.close();
   }
 }

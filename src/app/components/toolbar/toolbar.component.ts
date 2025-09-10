@@ -11,6 +11,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { SearchBarComponent } from "../search-bar/search-bar.component";
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -27,8 +29,26 @@ import { SearchBarComponent } from "../search-bar/search-bar.component";
     MatTooltipModule,
     MatCardModule,
     SearchBarComponent
-],
+  ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css',
 })
-export class ToolbarComponent {}
+export class ToolbarComponent {
+  constructor(public dialog: MatDialog) { }
+
+  openLoginDialog(): void {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '500px', // Customize width
+      autoFocus: true,
+      disableClose: true, // Allow closing by clicking outside
+      data: { /* Optional: data to pass to the dialog */ }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if (result && result.success) {
+        // Handle successful login
+      }
+    });
+  }
+}

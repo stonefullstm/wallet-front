@@ -8,7 +8,7 @@
         <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
-        <button mat-menu-item routerLink="/login">
+        <button mat-menu-item (click)="openLoginDialog()">
             <mat-icon>input</mat-icon><span>Login</span>
         </button>
         <mat-divider></mat-divider>
