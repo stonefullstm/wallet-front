@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,7 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
-import { SearchBarComponent } from "../search-bar/search-bar.component";
+import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 
@@ -28,23 +28,22 @@ import { LoginComponent } from '../login/login.component';
     MatToolbarModule,
     MatTooltipModule,
     MatCardModule,
-    SearchBarComponent
+    SearchBarComponent,
   ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css',
 })
 export class ToolbarComponent {
-  constructor(public dialog: MatDialog) { }
+  dialog = inject(MatDialog);
 
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
-      width: '500px', // Customize width
+      width: '500px',
       autoFocus: true,
-      disableClose: true, // Allow closing by clicking outside
-      data: { /* Optional: data to pass to the dialog */ }
+      disableClose: true,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed', result);
       if (result && result.success) {
         // Handle successful login

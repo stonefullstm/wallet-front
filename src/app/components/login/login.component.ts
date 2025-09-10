@@ -1,16 +1,25 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Location } from '@angular/common';
 import { TokenService } from '../../services/api/token.service';
-import { Router } from '@angular/router';
 import { LoginData } from '../../models/loginData';
 import { StorageService } from '../../services/storage/storage.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogContent, MatDialogRef, MatDialogActions, MatDialogTitle } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogActions,
+  MatDialogTitle,
+} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -23,28 +32,26 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogContent, MatDialogRef, MatDialogAc
     MatButtonModule,
     MatDialogContent,
     MatDialogActions,
-    MatDialogTitle
+    MatDialogTitle,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent implements OnInit {
+  dialogRef = inject<MatDialogRef<LoginComponent>>(MatDialogRef);
+  private fb = inject(FormBuilder);
+  data = inject(MAT_DIALOG_DATA);
+
   private formBuilder = inject(FormBuilder);
   private tokenService = inject(TokenService);
   private storageService = inject(StorageService);
-  private router = inject(Router);
-  private location = inject(Location);
 
   form!: FormGroup;
 
-  constructor(
-    public dialogRef: MatDialogRef<LoginComponent>,
-    private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
+  constructor() {
     this.form = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
   ngOnInit(): void {
@@ -68,10 +75,9 @@ export class LoginComponent implements OnInit {
       this.tokenService.getToken(loginData).subscribe({
         next: (data) => {
           this.storageService.setToken('accessToken', data.access);
-          this.location.back();
         },
       });
-      // this.dialogRef.close({ success: true, username: username }); // Pass data back
+      this.dialogRef.close();
     }
   }
 
