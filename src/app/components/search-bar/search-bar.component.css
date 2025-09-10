@@ -1,0 +1,11 @@
+.mat-toolbar {
+  display: flex;
+  background-color: #88c3b5; /* Primary color */ 
+  justify-content: center;
+  flex-direction: column;
+  height: 150px;
+}
+
+.mat-toolbar span {
+  margin-bottom: 5px;
+}

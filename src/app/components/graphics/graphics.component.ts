@@ -47,7 +47,7 @@ export class GraphicsComponent implements OnInit {
                 mode: 'lines',
                 fill: 'tozeroy',
                 line: { color: 'black' },
-                fillcolor: 'rgba(0, 255, 0, 0.5)'
+                fillcolor: '#b3c5ba'
               }
             ],
             layout: {
