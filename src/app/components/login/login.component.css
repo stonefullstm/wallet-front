@@ -10,15 +10,8 @@ form {
   flex-direction: column;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
 .header h1 {
-  margin: 0;
+  text-align: center;
 }
 
 mat-form-field {

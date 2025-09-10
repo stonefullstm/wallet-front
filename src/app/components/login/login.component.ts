@@ -10,7 +10,7 @@ import { TokenService } from '../../services/api/token.service';
 import { Router } from '@angular/router';
 import { LoginData } from '../../models/loginData';
 import { StorageService } from '../../services/storage/storage.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogContent, MatDialogRef, MatDialogActions } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogContent, MatDialogRef, MatDialogActions, MatDialogTitle } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +23,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogContent, MatDialogRef, MatDialogAc
     MatButtonModule,
     MatDialogContent,
     MatDialogActions,
+    MatDialogTitle
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
@@ -57,27 +58,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // onLogin(): void {
-  //   const loginData: LoginData = {
-  //     username: this.form.get('username')?.value,
-  //     password: this.form.get('password')?.value,
-  //   };
-  //   this.tokenService.getToken(loginData).subscribe({
-  //     next: (data) => {
-  //       console.log(data);
-  //       this.storageService.setToken('accessToken', data.access);
-  //       // this.domainService.setDomain(data.domain);
-  //       this.location.back();
-  //     },
-  //   });
-  // }
-
   onLogin(): void {
     if (this.form.valid) {
-      // Perform login logic, e.g., call an authentication service
-      const { username, password } = this.form.value;
-      // ...
-      this.dialogRef.close({ success: true, username: username }); // Pass data back
+      // const { username, password } = this.form.value;
+      const loginData: LoginData = {
+        username: this.form.get('username')?.value,
+        password: this.form.get('password')?.value,
+      };
+      this.tokenService.getToken(loginData).subscribe({
+        next: (data) => {
+          this.storageService.setToken('accessToken', data.access);
+          this.location.back();
+        },
+      });
+      // this.dialogRef.close({ success: true, username: username }); // Pass data back
     }
   }
 
