@@ -14,13 +14,14 @@
         requiredminlength="8" required>
     </mat-form-field>
   </form>
+  <span>Esqueci minha senha</span>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <span>Esqueci minha senha</span>
-  <div class="button_login">
+  <!-- <div class="button_login"> -->
+    <!-- <span>Esqueci minha senha</span> -->
     <button type="button" mat-raised-button [disabled]="!form.valid" (click)="onLogin()" color="primary">Entrar</button>
-  </div>
-  <div class="button_login">
+  <!-- </div> -->
+  <!-- <div class="button_login"> -->
     <button type="button" mat-button (click)="onCancel()">Cancelar</button>
-  </div>
+  <!-- </div> -->
 </mat-dialog-actions>
