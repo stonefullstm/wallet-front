@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,7 +10,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
-import { SearchBarComponent } from "../search-bar/search-bar.component";
+import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -26,9 +28,26 @@ import { SearchBarComponent } from "../search-bar/search-bar.component";
     MatToolbarModule,
     MatTooltipModule,
     MatCardModule,
-    SearchBarComponent
-],
+    SearchBarComponent,
+  ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css',
 })
-export class ToolbarComponent {}
+export class ToolbarComponent {
+  dialog = inject(MatDialog);
+
+  openLoginDialog(): void {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '500px',
+      autoFocus: true,
+      disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed', result);
+      if (result && result.success) {
+        // Handle successful login
+      }
+    });
+  }
+}

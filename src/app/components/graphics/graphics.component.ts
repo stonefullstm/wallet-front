@@ -47,11 +47,11 @@ export class GraphicsComponent implements OnInit {
                 mode: 'lines',
                 fill: 'tozeroy',
                 line: { color: 'black' },
-                fillcolor: '#b3c5ba'
-              }
+                fillcolor: '#b3c5ba',
+              },
             ],
             layout: {
-              title: {text: `Valores históricos de ${ticker}`},
+              title: { text: `Valores históricos de ${ticker}` },
               xaxis: {
                 rangeslider: { visible: false },
               },

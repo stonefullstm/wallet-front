@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { TickerData } from '../../models/tickerData';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TickersService {
   private http = inject(HttpClient);
@@ -13,7 +13,7 @@ export class TickersService {
   private baseUrl = '';
 
   constructor() {
-     this.baseUrl = `http://${environment.apiUrl}/stocks/`;
+    this.baseUrl = `http://${environment.apiUrl}/stocks/`;
   }
 
   getTickers(): Observable<TickerData[]> {

@@ -25,21 +25,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AsyncPipe,
   ],
   templateUrl: './search-bar.component.html',
-  styleUrl: './search-bar.component.css'
+  styleUrl: './search-bar.component.css',
 })
 export class SearchBarComponent implements OnInit {
   private tickersService = inject(TickersService);
   myControl = new FormControl('');
 
   tickerList: TickerData[] = [];
-  filteredOptions: Observable<string[]> = new Observable<string[]>;
+  filteredOptions: Observable<string[]> = new Observable<string[]>();
   options: string[] = [];
 
   ngOnInit(): void {
     this.getTickerList();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value || '')),
+      map((value) => this._filter(value || '')),
     );
   }
 
@@ -47,7 +47,7 @@ export class SearchBarComponent implements OnInit {
     this.tickersService.getTickers().subscribe({
       next: (data) => {
         this.tickerList = data;
-        this.options = data.map(ticker => ticker.ticker);
+        this.options = data.map((ticker) => ticker.ticker);
       },
     });
   }
@@ -55,6 +55,8 @@ export class SearchBarComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.options.filter((option) =>
+      option.toLowerCase().includes(filterValue),
+    );
   }
 }
