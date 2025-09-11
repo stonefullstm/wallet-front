@@ -37,8 +37,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatDialogActions,
     MatDialogTitle,
     RouterLink,
-    MatProgressSpinnerModule,  
-],
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -84,14 +84,19 @@ export class LoginComponent implements OnInit {
         next: (data) => {
           this.storageService.setToken('accessToken', data.access);
           this.storageService.setToken('refreshToken', data.refresh);
-          this.snackBar.open('Login realizado com sucesso!', 'Fechar', { duration: 3000 });
+          this.snackBar.open('Login realizado com sucesso!', 'Fechar', {
+            duration: 3000,
+          });
           this.loading = false;
         },
         error: (err) => {
           console.error('Login error:', err);
-          this.snackBar.open('Erro no login. Verifique suas credenciais.', 'Fechar');
+          this.snackBar.open(
+            'Erro no login. Verifique suas credenciais.',
+            'Fechar',
+          );
           this.loading = false;
-        }
+        },
       });
       this.dialogRef.close();
     }
