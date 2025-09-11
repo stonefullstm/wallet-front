@@ -22,4 +22,11 @@ export const routes: Routes = [
         (mod) => mod.LoginComponent,
       ),
   },
+  {
+    path: 'stock-data/:ticker',
+    loadComponent: () =>
+      import('./components/stock-data/stock-data.component').then(
+        (mod) => mod.StockDataComponent,
+      ),
+  }
 ];
