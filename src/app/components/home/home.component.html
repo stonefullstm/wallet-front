@@ -1,14 +1,35 @@
 <app-toolbar>
-  <div chart>
-    <app-graphics></app-graphics>
-  </div>
-  <div high>
-    <app-greater [dataType]="0"></app-greater>
-  </div>
-  <div low>
-    <app-greater [dataType]="1"></app-greater>
-  </div>
-  <div volume>
-    <app-greater [dataType]="2"></app-greater>
+  <div>
+    <div class="toolbar-spacer">
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>Gráfico</mat-card-title>
+        </mat-card-header>
+        <app-graphics></app-graphics>
+      </mat-card>
+    </div>
+    <div class="greater-cards">
+      <mat-card class="greater-card">
+        <mat-card-header>
+          <mat-card-title>Maiores altas</mat-card-title>
+        </mat-card-header>
+        <app-greater [dataType]="0"></app-greater>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Maiores baixas</mat-card-title>
+        </mat-card-header>
+        <app-greater [dataType]="1"></app-greater>
+
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Maiores volumes</mat-card-title>
+        </mat-card-header>
+        <app-greater [dataType]="2"></app-greater>
+      </mat-card>
+    </div>
   </div>
 </app-toolbar>

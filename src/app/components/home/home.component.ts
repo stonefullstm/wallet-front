@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { GreaterComponent } from '../greater/greater.component';
 import { GraphicsComponent } from '../graphics/graphics.component';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  imports: [ToolbarComponent, GreaterComponent, GraphicsComponent],
+  imports: [ToolbarComponent, GreaterComponent, GraphicsComponent, MatCardModule],
 })
 export class HomeComponent {}
