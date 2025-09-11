@@ -1,7 +1,12 @@
 <app-toolbar>
   <div class="stock-data-container">
-    <h2>Informações do Ativo</h2>
-    <p>Aqui você pode ver informações detalhadas sobre o ativo selecionado.</p>
-    <!-- Adicione mais detalhes do ativo aqui -->
+    <div class="stock-data-spacer">
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>Gráfico</mat-card-title>
+        </mat-card-header>
+        <app-graphics></app-graphics>
+      </mat-card>
+    </div>
   </div>
 </app-toolbar>
