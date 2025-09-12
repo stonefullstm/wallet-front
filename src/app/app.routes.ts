@@ -22,6 +22,13 @@ export const routes: Routes = [
         (mod) => mod.LoginComponent,
       ),
   },
+    {
+    path: 'refresh',
+    loadComponent: () =>
+      import('./components/refresh/refresh.component').then(
+        (mod) => mod.RefreshComponent,
+      ),
+  },
   {
     path: 'stock-data/:ticker',
     loadComponent: () =>
