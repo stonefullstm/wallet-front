@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { AsyncPipe } from '@angular/common';
@@ -58,5 +58,13 @@ export class SearchBarComponent implements OnInit {
     return this.options.filter((option) =>
       option.toLowerCase().includes(filterValue),
     );
+  }
+
+  onOptionSelected(event: any) {
+    
+    const selectedValue: string = event.option.value;
+    console.log(selectedValue);
+    
+    // this.myControl.setValue(inputValue, { emitEvent: false });
   }
 }

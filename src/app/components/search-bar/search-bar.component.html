@@ -3,11 +3,12 @@
   <form>
     <mat-form-field appearance="fill">
       <mat-label>Pesquisar</mat-label>
-      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Pesquise o ativo">
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto"
+        placeholder="Pesquise o ativo">
       <mat-icon matPrefix>search</mat-icon>
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
         @for (option of filteredOptions | async; track option) {
-          <mat-option [value]="option">{{option}}</mat-option>
+        <mat-option [value]="option">{{option}}</mat-option>
         }
       </mat-autocomplete>
     </mat-form-field>
