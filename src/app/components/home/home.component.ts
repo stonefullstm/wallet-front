@@ -8,6 +8,11 @@ import { MatCardModule } from '@angular/material/card';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  imports: [ToolbarComponent, GreaterComponent, GraphicsComponent, MatCardModule],
+  imports: [
+    ToolbarComponent,
+    GreaterComponent,
+    GraphicsComponent,
+    MatCardModule,
+  ],
 })
 export class HomeComponent {}

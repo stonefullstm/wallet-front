@@ -28,5 +28,5 @@ export const routes: Routes = [
       import('./components/stock-data/stock-data.component').then(
         (mod) => mod.StockDataComponent,
       ),
-  }
+  },
 ];

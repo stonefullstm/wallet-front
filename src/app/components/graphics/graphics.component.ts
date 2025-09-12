@@ -19,7 +19,8 @@ export class GraphicsComponent implements OnInit {
   graph = { data: [{}], layout: {} };
 
   ngOnInit(): void {
-    this.ticker = this.activatedRoute.snapshot.paramMap.get('ticker') || '^BVSP';
+    this.ticker =
+      this.activatedRoute.snapshot.paramMap.get('ticker') || '^BVSP';
     this.getHistoryData(this.ticker);
   }
 
