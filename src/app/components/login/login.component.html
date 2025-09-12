@@ -15,14 +15,15 @@
     </mat-form-field>
   </form>
   <!-- <span>Esqueci minha senha</span> -->
-   <a routerLink="">Esqueci minha senha</a>
+  <mat-spinner *ngIf="loading" style="position: absolute; left: 40%; top: 40%; opacity: 0.3"></mat-spinner>
+  <a routerLink="">Esqueci minha senha</a>
 </mat-dialog-content>
 <mat-dialog-actions>
   <!-- <div class="button_login"> -->
-    <!-- <span>Esqueci minha senha</span> -->
-    <button type="button" mat-raised-button [disabled]="!form.valid" (click)="onLogin()" color="primary">Entrar</button>
+  <!-- <span>Esqueci minha senha</span> -->
+  <button type="button" mat-raised-button [disabled]="!form.valid" (click)="onLogin()" color="primary">Entrar</button>
   <!-- </div> -->
   <!-- <div class="button_login"> -->
-    <button type="button" mat-button (click)="onCancel()">Cancelar</button>
+  <button type="button" mat-button (click)="onCancel()">Cancelar</button>
   <!-- </div> -->
 </mat-dialog-actions>

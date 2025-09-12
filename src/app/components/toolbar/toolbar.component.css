@@ -10,26 +10,3 @@
   height: 90%;
   margin: 0;
 }  
-
-.greater-cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.greater-cards mat-card {
-  border: 1px solid black;
-}
-
-.chart-card {
-  border: 1px solid black;
-  width: 80%;
-  margin: 20px;
-  padding: 20px;
-}
-
-.toolbar-spacer {
-  display: flex;
-  justify-content: center;
-}

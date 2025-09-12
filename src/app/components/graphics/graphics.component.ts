@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { HistoryService } from '../../services/api/history.service';
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
@@ -13,10 +13,11 @@ PlotlyModule.plotlyjs = PlotlyJS;
 })
 export class GraphicsComponent implements OnInit {
   private historyService: HistoryService = inject(HistoryService);
+  @Input() ticker = '';
   graph = { data: [{}], layout: {} };
 
   ngOnInit(): void {
-    this.getHistoryData('^BVSP');
+    this.getHistoryData(this.ticker);
   }
 
   getHistoryData(ticker: string) {

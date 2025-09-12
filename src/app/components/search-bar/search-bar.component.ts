@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {
+  MatAutocompleteModule,
+  MatAutocompleteSelectedEvent,
+} from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { AsyncPipe } from '@angular/common';
@@ -8,8 +11,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { TickersService } from '../../services/api/tickers.service';
 import { TickerData } from '../../models/tickerData';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith, timer } from 'rxjs';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -30,6 +34,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 export class SearchBarComponent implements OnInit {
   private tickersService = inject(TickersService);
   myControl = new FormControl('');
+  router = inject(Router);
 
   tickerList: TickerData[] = [];
   filteredOptions: Observable<string[]> = new Observable<string[]>();
@@ -58,5 +63,14 @@ export class SearchBarComponent implements OnInit {
     return this.options.filter((option) =>
       option.toLowerCase().includes(filterValue),
     );
+  }
+
+  onOptionSelected(event: MatAutocompleteSelectedEvent) {
+    const selectedValue: string = event.option.value;
+    console.log(selectedValue);
+    timer(500).subscribe(x => {
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
+         this.router.navigate([`/stock-data/${selectedValue}`]));
+    });
   }
 }
